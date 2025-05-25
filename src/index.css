@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #5E3B76;
+  --secondary: #2C2C6C;
+  --accent: #4DB5FF;
+  --background: #13111C;
+  --text: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #5E3B76 0%, #4DB5FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #5E3B76 0%, #2C2C6C 100%);
+  transition: background 0.3s ease;
+}
+
+.glass-effect {
+  background: rgba(30, 30, 30, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-effect:hover {
+  background: rgba(30, 30, 30, 0.25);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.progress-ring-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  transition: transform 0.3s ease;
+}
+
+.progress-ring-container:hover {
+  transform: scale(1.05);
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: all 0.3s ease;
+}
+
+.progress-ring-circle {
+  stroke-dasharray: 283;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-ring-circle-bg {
+  stroke: rgba(255, 255, 255, 0.1);
+  transition: stroke 0.3s ease;
+}
+
+.progress-ring-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.card-hover {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply relative before:absolute before:-inset-1 before:rounded-lg before:bg-gradient-to-r before:from-primary before:to-accent before:opacity-0 before:transition-opacity hover:before:opacity-100;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.social-icon {
+  @apply transform transition-all duration-300 hover:scale-110 hover:rotate-6;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(94, 59, 118, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(94, 59, 118, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(94, 59, 118, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+.tabs {
+  @apply grid grid-cols-5 relative;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.tab {
+  @apply flex items-center justify-center gap-2 py-3 px-4 text-center cursor-pointer whitespace-nowrap;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab:hover {
+  @apply text-accent;
+  transform: translateY(-2px);
+}
+
+.tab-slider {
+  @apply absolute h-full bg-primary/30 rounded-full;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.section-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+/* Input transitions */
+input, textarea, button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, textarea:focus {
+  transform: translateY(-2px);
+}
+
+/* Link transitions */
+a {
+  transition: all 0.3s ease;
+}
+
+/* Image transitions */
+img {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button transitions */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Section transitions */
+section {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Enhanced animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
